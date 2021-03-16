@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react'
+import styled from 'styled-components'
+import ControlledOpenSelect from './ControlledOpenSelect';
+import Button from '@material-ui/core/Button';
 
 function App() {
+  const [shoot, setShoot] = React.useState('')
+  // const [pics, setPics] = React.useState([])
+
+  async function getPics() {
+    return (
+      <div>
+          <img src={require('./images/derek/1.JPG').default} height = {300} weight = {200} />
+      </div>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className="header">
+        <h1>portraits by trinity</h1> 
+
+        <div className="dropdown">
+          <ControlledOpenSelect id="select client" setShoot={setShoot} shoot={shoot}>
+            select a shoot
+          </ControlledOpenSelect>
+
+          <Button variant="contained" color="primary" style={{height:55, marginLeft:10, width:100}} 
+          onClick={getPics}>
+          </Button>
+        </div>
       </header>
+
     </div>
   );
 }
