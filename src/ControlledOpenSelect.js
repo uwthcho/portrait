@@ -11,21 +11,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(.5),
     minWidth: 120,
   },
 }));
 
-export default function ControlledOpenSelect() {
+export default function ControlledOpenSelect(props) {
   const classes = useStyles();
-  const [shoot, setShoot] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
 
   const handleChange = (event) => {
     console.log(event.target.value);
-    setShoot(event.target.value);
-    //getPics()
+    props.setShoot(event.target.value);
   };
 
   const handleClose = () => {
@@ -46,7 +44,7 @@ export default function ControlledOpenSelect() {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={shoot}
+          value={props.shoot}
           onChange={handleChange}
 
         >
